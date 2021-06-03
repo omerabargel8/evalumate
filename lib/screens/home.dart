@@ -69,7 +69,7 @@ class HomePage extends StatelessWidget {
                                   textAlign: TextAlign.start,
                                   style: TextStyle(
                                     fontSize: 50.0,
-                                    color: LightColors.kDarkBlue,
+                                    color: Color.fromRGBO(0, 101, 149, 0.9),
                                     fontWeight: FontWeight.w800,
                                   ),
                                 ),
@@ -131,29 +131,35 @@ class HomePage extends StatelessWidget {
                                 subtitle: 'Enter details about the property',
                               ),
                               style: ElevatedButton.styleFrom(
+                                onPrimary: Color.fromRGBO(0, 101, 149, 0.9),
                                 primary: Colors.white,
+                                textStyle: TextStyle(color: Colors.black),
                               )),
                           const SizedBox(
                             height: 15.0,
                           ),
                           ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => QuestionsStepper()),
-                                );
-                              },
-                              child: TaskColumn(
-                                icon: Icons.blur_circular,
-                                iconBackgroundColor:
-                                    Color.fromRGBO(210, 35, 42, 0.9),
-                                title: 'Scans',
-                                subtitle:
-                                    'Let start scanning the contents of the asset',
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                  primary: Colors.white)),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => QuestionsStepper()),
+                              );
+                            },
+                            child: TaskColumn(
+                              icon: Icons.blur_circular,
+                              iconBackgroundColor:
+                                  Color.fromRGBO(210, 35, 42, 0.9),
+                              title: 'Scans',
+                              subtitle:
+                                  'Let start scanning the contents of the asset',
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              onPrimary: Color.fromRGBO(0, 101, 149, 0.9),
+                              primary: Colors.white,
+                              textStyle: TextStyle(color: Colors.black),
+                            ),
+                          ),
                           SizedBox(height: 15.0),
                           ElevatedButton(
                               onPressed: () {
@@ -171,7 +177,10 @@ class HomePage extends StatelessWidget {
                                 subtitle: 'valuable and special items',
                               ),
                               style: ElevatedButton.styleFrom(
-                                  primary: Colors.white)),
+                                onPrimary: Color.fromRGBO(0, 101, 149, 0.9),
+                                primary: Colors.white,
+                                textStyle: TextStyle(color: Colors.black),
+                              )),
                         ],
                       ),
                     ),
