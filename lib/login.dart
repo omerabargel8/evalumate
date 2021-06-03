@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/screens/home.dart';
 
 class SignIn extends StatefulWidget {
   final Function toggleView;
@@ -76,6 +77,16 @@ class _SignInState extends State<SignIn> {
               ),
               SizedBox(height: 20.0),
               ElevatedButton(
+                  child: Text(
+                    'Sign in',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onPressed: () async {
+                    if (_formKey.currentState.validate()) {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HomePage()));
+                    }
+                  }),
                 child: Text(
                   'התחבר',
                   style: TextStyle(color: Colors.white),
