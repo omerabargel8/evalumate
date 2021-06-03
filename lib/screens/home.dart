@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/light_colors.dart';
 import 'package:flutter_app/screens/Questions_stepper.dart';
+import 'package:flutter_app/screens/list.dart';
 import 'package:flutter_app/screens/rooms.dart';
 import 'package:flutter_app/screens/scan.dart';
 import 'package:flutter_app/widgets/task_column.dart';
@@ -146,7 +147,7 @@ class HomePage extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Scan()),
+                                      builder: (context) => HotelListView()),
                                 );
                               },
                               child: TaskColumn(
