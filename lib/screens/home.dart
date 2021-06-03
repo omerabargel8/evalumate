@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/light_colors.dart';
+import 'package:flutter_app/screens/questionnaire.dart';
+import 'package:flutter_app/screens/scan.dart';
+import 'package:flutter_app/screens/special_items.dart';
 import 'package:flutter_app/widgets/active_project_card.dart';
 import 'package:flutter_app/widgets/task_column.dart';
 import 'package:flutter_app/widgets/top_container.dart';
@@ -33,7 +36,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: LightColors.kLightYellow,
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -108,30 +111,62 @@ class HomePage extends StatelessWidget {
                               subheading('To Do:'),
                             ],
                           ),
-                          SizedBox(height: 15.0),
-                          TaskColumn(
-                            icon: Icons.alarm,
-                            iconBackgroundColor: LightColors.kRed,
-                            title: 'Asset questionnaire',
-                            subtitle: 'Enter details about the property',
-                          ),
-                          SizedBox(
+                          ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Questionnaire()),
+                                );
+                              },
+                              child: TaskColumn(
+                                icon: Icons.alarm,
+                                iconBackgroundColor:
+                                    Color.fromRGBO(210, 35, 42, 0.9),
+                                title: 'Asset questionnaire',
+                                subtitle: 'Enter details about the property',
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                  primary: Colors.white)),
+                          const SizedBox(
                             height: 15.0,
                           ),
-                          TaskColumn(
-                            icon: Icons.blur_circular,
-                            iconBackgroundColor: LightColors.kDarkYellow,
-                            title: 'Scans',
-                            subtitle:
-                                'Let start scanning the contents of the asset',
-                          ),
+                          ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Scan()),
+                                );
+                              },
+                              child: TaskColumn(
+                                icon: Icons.blur_circular,
+                                iconBackgroundColor:
+                                    Color.fromRGBO(210, 35, 42, 0.9),
+                                title: 'Scans',
+                                subtitle:
+                                    'Let start scanning the contents of the asset',
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                  primary: Colors.white)),
                           SizedBox(height: 15.0),
-                          TaskColumn(
-                            icon: Icons.check_circle_outline,
-                            iconBackgroundColor: LightColors.kBlue,
-                            title: 'Special items',
-                            subtitle: 'valuable and special items',
-                          ),
+                          ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SpecialItems()),
+                                );
+                              },
+                              child: TaskColumn(
+                                icon: Icons.check_circle_outline,
+                                iconBackgroundColor:
+                                    Color.fromRGBO(210, 35, 42, 0.9),
+                                title: 'Special items',
+                                subtitle: 'valuable and special items',
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                  primary: Colors.white)),
                         ],
                       ),
                     ),
