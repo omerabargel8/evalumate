@@ -23,6 +23,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  
+  image_picker: any
+  permission_handler: any
+  dio: ^4.0.0
+
     
 
 
