@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/light_colors.dart';
+import 'package:flutter_app/screens/scan.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class ActiveProjectsCard extends StatelessWidget {
@@ -32,7 +33,7 @@ class ActiveProjectsCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(2.0),
               child: CircularPercentIndicator(
                 animation: true,
                 radius: 75.0,
@@ -48,6 +49,7 @@ class ActiveProjectsCard extends StatelessWidget {
                 ),
               ),
             ),
+            SizedBox(height: 5.0),
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
@@ -55,12 +57,19 @@ class ActiveProjectsCard extends StatelessWidget {
                   title,
                   style: TextStyle(
                     fontSize: 20,
-                    color: Colors.white,
+                    color: Colors.black,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                SizedBox(height: 5.0),
-                Icon(icon, color: LightColors.kDarkBlue, size: 30.0),
+                IconButton(
+                  icon: Icon(icon, color: LightColors.kDarkBlue, size: 25.0),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Scan()),
+                    );
+                  },
+                ),
               ],
             ),
           ],
