@@ -41,8 +41,8 @@ class _ScanState extends State<Scan> {
   }
 
   postToServer(image) async {
-    var response = await Dio()
-        .post("localhost:5000/recognize", data: image.readAsBytesSync());
+    var response = await Dio().post("http://10.30.17.92:5000/recognize",
+        data: image.readAsBytesSync());
     print(response);
   }
 
