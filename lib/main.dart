@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/home.dart';
 import 'package:flutter_app/login.dart';
 import 'package:flutter_app/screens/scan.dart';
+import 'package:flutter_app/test.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scan(),
+      home: CartPage(),
     );
   }
 }
