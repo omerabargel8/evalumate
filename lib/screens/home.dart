@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/light_colors.dart';
-import 'package:flutter_app/screens/questionnaire.dart';
 import 'package:flutter_app/screens/Questions_stepper.dart';
-import 'package:flutter_app/screens/special_items.dart';
+import 'package:flutter_app/screens/rooms.dart';
+import 'package:flutter_app/screens/scan.dart';
 import 'package:flutter_app/widgets/task_column.dart';
 import 'package:flutter_app/widgets/top_container.dart';
 
@@ -15,18 +15,6 @@ class HomePage extends StatelessWidget {
           fontSize: 20.0,
           fontWeight: FontWeight.w700,
           letterSpacing: 1.2),
-    );
-  }
-
-  static CircleAvatar calendarIcon() {
-    return CircleAvatar(
-      radius: 25.0,
-      backgroundColor: LightColors.kGreen,
-      child: Icon(
-        Icons.calendar_today,
-        size: 20.0,
-        color: Colors.white,
-      ),
     );
   }
 
@@ -120,7 +108,7 @@ class HomePage extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Questionnaire()),
+                                      builder: (context) => QuestionsStepper()),
                                 );
                               },
                               child: TaskColumn(
@@ -143,7 +131,7 @@ class HomePage extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => QuestionsStepper()),
+                                    builder: (context) => Rooms()),
                               );
                             },
                             child: TaskColumn(
@@ -166,7 +154,7 @@ class HomePage extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => SpecialItems()),
+                                      builder: (context) => Scan()),
                                 );
                               },
                               child: TaskColumn(
