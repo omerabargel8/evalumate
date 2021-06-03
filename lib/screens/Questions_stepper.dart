@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinbox/material.dart';
 import 'package:im_stepper/stepper.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class QuestionsStepper extends StatefulWidget {
   @override
@@ -24,6 +26,8 @@ class _QuestionsStepperState extends State<QuestionsStepper> {
           child: Column(
             children: [
               IconStepper(
+                activeStepColor: Color.fromRGBO(0, 101, 149, 0.9),
+                stepColor: Color.fromRGBO(241, 241, 241, 1),
                 icons: [
                   Icon(Icons.supervised_user_circle),
                   Icon(Icons.flag),
@@ -36,7 +40,6 @@ class _QuestionsStepperState extends State<QuestionsStepper> {
 
                 // activeStep property set to activeStep variable defined above.
                 activeStep: activeStep,
-
                 // This ensures step-tapping updates the activeStep.
                 onStepReached: (index) {
                   setState(() {
@@ -44,25 +47,7 @@ class _QuestionsStepperState extends State<QuestionsStepper> {
                   });
                 },
               ),
-              header(),
-              Expanded(
-                child: FittedBox(
-                  child: Center(
-                    // child: Text('$activeStep'),
-                    child: Container(
-                      child: Text(
-                        '$activeStep',
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          color: Colors.yellow[900],
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              questionMaker(activeStep),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -74,6 +59,37 @@ class _QuestionsStepperState extends State<QuestionsStepper> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget question(question) {
+    return Column(
+      children: <Widget>[
+        const SizedBox(
+          height: 40.0,
+        ),
+        RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(
+            text: '$question',
+            style: GoogleFonts.portLligatSans(
+              textStyle: Theme.of(context).textTheme.display1,
+              fontSize: 30,
+              fontWeight: FontWeight.w700,
+              color: Colors.red,
+            ),
+          ),
+        ),
+        SpinBox(
+          min: 1,
+          max: 100,
+          value: 50,
+          onChanged: (value) => print(value),
+        ),
+        const SizedBox(
+          height: 20.0,
+        ),
+      ],
     );
   }
 
@@ -107,53 +123,29 @@ class _QuestionsStepperState extends State<QuestionsStepper> {
     );
   }
 
-  /// Returns the header wrapping the header text.
-  Widget header() {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.orange,
-        borderRadius: BorderRadius.circular(5),
-      ),
-      child: Row(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              headerText(),
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   // Returns the header text based on the activeStep.
-  String headerText() {
+  Widget questionMaker(index) {
     switch (activeStep) {
       case 1:
-        return 'Preface';
+        return question("1?");
 
       case 2:
-        return 'Table of Contents';
+        return question("2?");
 
       case 3:
-        return 'About the Author';
+        return question("3?");
 
       case 4:
-        return 'Publisher Information';
+        return question("4?");
 
       case 5:
-        return 'Reviews';
+        return question("5?");
 
       case 6:
-        return 'Chapters #1';
+        return question("6?");
 
       default:
-        return 'Introduction';
+        return question("7?");
     }
   }
 }
