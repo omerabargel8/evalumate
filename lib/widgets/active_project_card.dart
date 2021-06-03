@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/light_colors.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class ActiveProjectsCard extends StatelessWidget {
   final Color cardColor;
   final double loadingPercent;
   final String title;
-  final String subtitle;
+  final IconData icon;
 
   ActiveProjectsCard({
     this.cardColor,
     this.loadingPercent,
     this.title,
-    this.subtitle,
+    this.icon,
   });
 
   @override
@@ -28,7 +29,7 @@ class ActiveProjectsCard extends StatelessWidget {
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(10.0),
@@ -48,24 +49,18 @@ class ActiveProjectsCard extends StatelessWidget {
               ),
             ),
             Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Text(
                   title,
                   style: TextStyle(
-                    fontSize: 14.0,
+                    fontSize: 20,
                     color: Colors.white,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                Text(
-                  subtitle,
-                  style: TextStyle(
-                    fontSize: 12.0,
-                    color: Colors.white54,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
+                SizedBox(height: 5.0),
+                Icon(icon, color: LightColors.kDarkBlue, size: 30.0),
               ],
             ),
           ],
