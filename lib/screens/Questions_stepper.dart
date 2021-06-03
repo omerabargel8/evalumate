@@ -72,12 +72,11 @@ class _QuestionsStepperState extends State<QuestionsStepper> {
           textAlign: TextAlign.center,
           text: TextSpan(
             text: '$question',
-            style: GoogleFonts.portLligatSans(
-              textStyle: Theme.of(context).textTheme.display1,
-              fontSize: 30,
-              fontWeight: FontWeight.w700,
-              color: Colors.red,
-            ),
+            style: GoogleFonts.montserrat(
+                textStyle: Theme.of(context).textTheme.display1,
+                fontSize: 30,
+                fontWeight: FontWeight.w400,
+                color: Color.fromRGBO(210, 35, 42, 0.9)),
           ),
         ),
         SpinBox(
@@ -105,6 +104,10 @@ class _QuestionsStepperState extends State<QuestionsStepper> {
         }
       },
       child: Text('Next'),
+      style: ElevatedButton.styleFrom(
+        primary: Color.fromRGBO(0, 101, 149, 1),
+        textStyle: TextStyle(color: Colors.black),
+      ),
     );
   }
 
@@ -120,6 +123,10 @@ class _QuestionsStepperState extends State<QuestionsStepper> {
         }
       },
       child: Text('Prev'),
+      style: ElevatedButton.styleFrom(
+        primary: Color.fromRGBO(0, 101, 149, 1),
+        textStyle: TextStyle(color: Colors.black),
+      ),
     );
   }
 
@@ -127,25 +134,27 @@ class _QuestionsStepperState extends State<QuestionsStepper> {
   Widget questionMaker(index) {
     switch (activeStep) {
       case 1:
-        return question("1?");
+        return question(
+            "hey! please tell me What is the size of your house in square meters");
 
       case 2:
-        return question("2?");
+        return question("What is the total number of rooms in the house?");
 
       case 3:
-        return question("3?");
+        return question(
+            "how would you describe the structure quality of house in one word");
 
       case 4:
-        return question("4?");
+        return question("What kind of house do you live in?");
 
       case 5:
-        return question("5?");
+        return question("What is the number of people living in this house?");
 
       case 6:
-        return question("6?");
+        return question("What is the age of your house (sorry for being rude)");
 
       default:
-        return question("7?");
+        return question("What is keeping your home safe from burglars");
     }
   }
 }

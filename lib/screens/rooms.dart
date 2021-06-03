@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/light_colors.dart';
 import 'package:flutter_app/widgets/active_project_card.dart';
 import 'package:flutter_app/widgets/top_container.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Rooms extends StatefulWidget {
   @override
@@ -13,7 +14,7 @@ class _RoomsState extends State<Rooms> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromRGBO(241, 241, 241, 1),
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -42,23 +43,29 @@ class _RoomsState extends State<Rooms> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
+                              SizedBox(height: 10.0),
                               Container(
                                 child: Text(
                                   'My Home',
                                   textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                    fontSize: 50.0,
-                                    color: Color.fromRGBO(0, 101, 149, 0.9),
+                                  style: GoogleFonts.dancingScript(
+                                    textStyle:
+                                        Theme.of(context).textTheme.display1,
+                                    fontSize: 60.0,
                                     fontWeight: FontWeight.w800,
+                                    color: Color.fromRGBO(0, 101, 149, 1),
                                   ),
+                                  // style: TextStyle(
+                                  //   fontFamily: GoogleFonts.dancingScript(),
+                                  //   fontSize: 50.0,
+                                  //   color: Colors.black,
+                                  //   fontWeight: FontWeight.w800,
+                                  // ),
                                 ),
                               ),
                               Icon(Icons.home,
-                                  color: Color.fromRGBO(210, 35, 42, 0.9),
+                                  color: Color.fromRGBO(0, 101, 149, 1),
                                   size: 30.0),
-                              const SizedBox(
-                                height: 20.0,
-                              ),
                             ],
                           )
                         ],
@@ -72,19 +79,18 @@ class _RoomsState extends State<Rooms> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  // subheading('Active Projects'),
                   SizedBox(height: 5.0),
                   Row(
                     children: <Widget>[
                       ActiveProjectsCard(
-                        cardColor: LightColors.kGreen,
+                        cardColor: Color.fromRGBO(0, 101, 149, 0.6),
                         loadingPercent: 0.25,
                         title: 'Kitchen',
                         icon: Icons.restaurant,
                       ),
                       SizedBox(width: 20.0),
                       ActiveProjectsCard(
-                        cardColor: LightColors.kRed,
+                        cardColor: Color.fromRGBO(0, 101, 149, 0.3),
                         loadingPercent: 0.6,
                         title: 'Living Room',
                         icon: Icons.tv,
@@ -94,14 +100,14 @@ class _RoomsState extends State<Rooms> {
                   Row(
                     children: <Widget>[
                       ActiveProjectsCard(
-                        cardColor: LightColors.kDarkYellow,
+                        cardColor: Color.fromRGBO(0, 101, 149, 0.1),
                         loadingPercent: 0.45,
                         title: 'Bedroom',
                         icon: Icons.king_bed,
                       ),
                       SizedBox(width: 20.0),
                       ActiveProjectsCard(
-                        cardColor: LightColors.kBlue,
+                        cardColor: Color.fromRGBO(0, 101, 149, 0.5),
                         loadingPercent: 0.9,
                         title: 'Bathroom',
                         icon: Icons.bathtub,

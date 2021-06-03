@@ -5,6 +5,7 @@ import 'package:flutter_app/screens/rooms.dart';
 import 'package:flutter_app/screens/scan.dart';
 import 'package:flutter_app/widgets/task_column.dart';
 import 'package:flutter_app/widgets/top_container.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatelessWidget {
   Text subheading(String title) {
@@ -22,7 +23,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromRGBO(241, 241, 241, 1),
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -55,21 +56,12 @@ class HomePage extends StatelessWidget {
                                 child: Text(
                                   'Hello!',
                                   textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                    fontSize: 50.0,
-                                    color: Color.fromRGBO(0, 101, 149, 0.9),
+                                  style: GoogleFonts.dancingScript(
+                                    textStyle:
+                                        Theme.of(context).textTheme.display1,
+                                    fontSize: 90.0,
                                     fontWeight: FontWeight.w800,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                child: Text(
-                                  'Shimrit Harrai',
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                    fontSize: 16.0,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w400,
+                                    color: Color.fromRGBO(0, 101, 149, 1),
                                   ),
                                 ),
                               ),
@@ -120,7 +112,7 @@ class HomePage extends StatelessWidget {
                               ),
                               style: ElevatedButton.styleFrom(
                                 onPrimary: Color.fromRGBO(0, 101, 149, 0.9),
-                                primary: Colors.white,
+                                primary: Color.fromRGBO(241, 241, 241, 1),
                                 textStyle: TextStyle(color: Colors.black),
                               )),
                           const SizedBox(
@@ -144,7 +136,7 @@ class HomePage extends StatelessWidget {
                             ),
                             style: ElevatedButton.styleFrom(
                               onPrimary: Color.fromRGBO(0, 101, 149, 0.9),
-                              primary: Colors.white,
+                              primary: Color.fromRGBO(241, 241, 241, 1),
                               textStyle: TextStyle(color: Colors.black),
                             ),
                           ),
@@ -166,7 +158,7 @@ class HomePage extends StatelessWidget {
                               ),
                               style: ElevatedButton.styleFrom(
                                 onPrimary: Color.fromRGBO(0, 101, 149, 0.9),
-                                primary: Colors.white,
+                                primary: Color.fromRGBO(241, 241, 241, 1),
                                 textStyle: TextStyle(color: Colors.black),
                               )),
                         ],
