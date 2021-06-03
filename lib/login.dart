@@ -23,9 +23,10 @@ class _SignInState extends State<SignIn> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Color.fromRGBO(210, 35, 42, 0.9),
         elevation: 0.0,
-        title: Text('login'),
+        title: Text('התחברות'),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
@@ -86,6 +87,19 @@ class _SignInState extends State<SignIn> {
                           MaterialPageRoute(builder: (context) => HomePage()));
                     }
                   }),
+                child: Text(
+                  'התחבר',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () async {
+                  if (_formKey.currentState.validate()) {
+                    print("sign in");
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Color.fromRGBO(0, 101, 149, 0.9),
+                ),
+              ),
               SizedBox(height: 12.0),
               Text(
                 error,
