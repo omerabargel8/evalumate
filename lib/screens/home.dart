@@ -25,24 +25,20 @@ class HomePage extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Color.fromRGBO(241, 241, 241, 1),
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(210, 35, 42, 0.9),
+        elevation: 0.0,
+        title: Text('Home'),
+      ),
       body: SafeArea(
         child: Column(
           children: <Widget>[
             TopContainer(
-              height: 200,
+              height: 150,
               width: width,
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Icon(Icons.menu,
-                            color: LightColors.kDarkBlue, size: 30.0),
-                        Icon(Icons.search,
-                            color: LightColors.kDarkBlue, size: 25.0),
-                      ],
-                    ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 0, vertical: 0.0),
@@ -67,7 +63,7 @@ class HomePage extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(
-                                height: 20.0,
+                                height: 2.0,
                               ),
                             ],
                           )
@@ -81,87 +77,107 @@ class HomePage extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Container(
+                      width: 400,
+                      height: 400,
                       color: Colors.transparent,
                       padding: EdgeInsets.symmetric(
                           horizontal: 20.0, vertical: 10.0),
                       child: Column(
                         children: <Widget>[
                           const SizedBox(
-                            height: 40.0,
+                            height: 10.0,
                           ),
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              subheading('To Do:'),
+                              subheading("          Let's Get Started!"),
                             ],
                           ),
-                          ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => QuestionsStepper()),
-                                );
-                              },
-                              child: TaskColumn(
-                                icon: Icons.alarm,
-                                iconBackgroundColor:
-                                    Color.fromRGBO(210, 35, 42, 0.9),
-                                title: 'Asset questionnaire',
-                                subtitle: 'Enter details about the property',
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                onPrimary: Color.fromRGBO(0, 101, 149, 0.9),
-                                primary: Color.fromRGBO(241, 241, 241, 1),
-                                textStyle: TextStyle(color: Colors.black),
-                              )),
                           const SizedBox(
                             height: 15.0,
                           ),
-                          ElevatedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Rooms()),
-                              );
-                            },
-                            child: TaskColumn(
-                              icon: Icons.blur_circular,
-                              iconBackgroundColor:
-                                  Color.fromRGBO(210, 35, 42, 0.9),
-                              title: 'Scans',
-                              subtitle:
-                                  'Let start scanning the contents of the asset',
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              onPrimary: Color.fromRGBO(0, 101, 149, 0.9),
-                              primary: Color.fromRGBO(241, 241, 241, 1),
-                              textStyle: TextStyle(color: Colors.black),
-                            ),
+                          Container(
+                              width: 350,
+                              height: 60,
+                              margin: const EdgeInsets.only(top: 20),
+                              child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              QuestionsStepper()),
+                                    );
+                                  },
+                                  child: TaskColumn(
+                                    icon: Icons.text_snippet_outlined,
+                                    iconBackgroundColor:
+                                        Color.fromRGBO(210, 35, 42, 0.9),
+                                    title: 'Asset questionnaire',
+                                    subtitle:
+                                        'Enter details about the property',
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    onPrimary: Color.fromRGBO(0, 101, 149, 0.9),
+                                    primary: Color.fromRGBO(241, 241, 241, 1),
+                                    textStyle: TextStyle(color: Colors.black),
+                                  ))),
+                          const SizedBox(
+                            height: 15.0,
                           ),
-                          SizedBox(height: 15.0),
-                          ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => HotelListView()),
-                                );
-                              },
-                              child: TaskColumn(
-                                icon: Icons.check_circle_outline,
-                                iconBackgroundColor:
-                                    Color.fromRGBO(210, 35, 42, 0.9),
-                                title: 'Special items',
-                                subtitle: 'valuable and special items',
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                onPrimary: Color.fromRGBO(0, 101, 149, 0.9),
-                                primary: Color.fromRGBO(241, 241, 241, 1),
-                                textStyle: TextStyle(color: Colors.black),
+                          Container(
+                              width: 350,
+                              height: 60,
+                              margin: const EdgeInsets.only(top: 20),
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Rooms()),
+                                  );
+                                },
+                                child: TaskColumn(
+                                  icon: Icons.camera_alt,
+                                  iconBackgroundColor:
+                                      Color.fromRGBO(210, 35, 42, 0.9),
+                                  title: 'Scans',
+                                  subtitle:
+                                      'Let start scanning the contents\nof the asset',
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  onPrimary: Color.fromRGBO(0, 101, 149, 0.9),
+                                  primary: Color.fromRGBO(241, 241, 241, 1),
+                                  textStyle: TextStyle(color: Colors.black),
+                                ),
                               )),
+                          SizedBox(height: 15.0),
+                          Container(
+                              width: 350,
+                              height: 60,
+                              margin: const EdgeInsets.only(top: 20),
+                              child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              HotelListView()),
+                                    );
+                                  },
+                                  child: TaskColumn(
+                                    icon: Icons.star,
+                                    iconBackgroundColor:
+                                        Color.fromRGBO(210, 35, 42, 0.9),
+                                    title: 'Special items',
+                                    subtitle: 'valuable and special items',
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    onPrimary: Color.fromRGBO(0, 101, 149, 0.9),
+                                    primary: Color.fromRGBO(241, 241, 241, 1),
+                                    textStyle: TextStyle(color: Colors.black),
+                                  ))),
                         ],
                       ),
                     ),

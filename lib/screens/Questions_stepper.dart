@@ -9,7 +9,7 @@ class QuestionsStepper extends StatefulWidget {
 }
 
 class _QuestionsStepperState extends State<QuestionsStepper> {
-  int activeStep = 1; // Initial step set to 1.
+  int activeStep = 0; // Initial step set to 1.
 
   int upperBound = 6; // upperBound MUST BE total number of icons minus 1.
 
@@ -19,23 +19,30 @@ class _QuestionsStepperState extends State<QuestionsStepper> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
+          backgroundColor: Color.fromRGBO(210, 35, 42, 0.9),
+          elevation: 0.0,
           title: Text('Asset questionnaire'),
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
+              const SizedBox(
+                height: 10.0,
+              ),
               IconStepper(
-                activeStepColor: Color.fromRGBO(0, 101, 149, 0.9),
+                activeStepColor: Color.fromRGBO(0, 101, 149, 1),
                 stepColor: Color.fromRGBO(241, 241, 241, 1),
                 icons: [
-                  Icon(Icons.supervised_user_circle),
-                  Icon(Icons.flag),
-                  Icon(Icons.access_alarm),
-                  Icon(Icons.supervised_user_circle),
-                  Icon(Icons.flag),
-                  Icon(Icons.access_alarm),
-                  Icon(Icons.supervised_user_circle),
+                  Icon(
+                    Icons.photo_size_select_small_outlined,
+                  ),
+                  Icon(Icons.home_work_outlined),
+                  Icon(Icons.meeting_room_outlined),
+                  Icon(Icons.access_time_outlined),
+                  Icon(Icons.leaderboard_outlined),
+                  Icon(Icons.family_restroom),
+                  Icon(Icons.https_outlined)
                 ],
 
                 // activeStep property set to activeStep variable defined above.
@@ -62,7 +69,7 @@ class _QuestionsStepperState extends State<QuestionsStepper> {
     );
   }
 
-  Widget question(question) {
+  Widget question(question, isNumber) {
     return Column(
       children: <Widget>[
         const SizedBox(
@@ -79,12 +86,16 @@ class _QuestionsStepperState extends State<QuestionsStepper> {
                 color: Color.fromRGBO(210, 35, 42, 0.9)),
           ),
         ),
-        SpinBox(
-          min: 1,
-          max: 100,
-          value: 50,
-          onChanged: (value) => print(value),
-        ),
+        isNumber
+            ? SpinBox(
+                min: 1,
+                max: 100,
+                value: 50,
+                onChanged: (value) => print(value),
+              )
+            : TextField(
+                onChanged: (value) => print(value),
+              ),
         const SizedBox(
           height: 20.0,
         ),
@@ -134,27 +145,27 @@ class _QuestionsStepperState extends State<QuestionsStepper> {
   Widget questionMaker(index) {
     switch (activeStep) {
       case 1:
-        return question(
-            "hey! please tell me What is the size of your house in square meters");
+        return question("What kind of house do you live in?", false);
 
       case 2:
-        return question("What is the total number of rooms in the house?");
+        return question("How many rooms in the house?", true);
 
       case 3:
         return question(
-            "how would you describe the structure quality of house in one word");
+            "What is the age of your house?\n(sorry for being rude)", true);
 
       case 4:
-        return question("What kind of house do you live in?");
-
+        return question(
+            "How would you describe your house's structure quality in one sentence?",
+            false);
       case 5:
-        return question("What is the number of people living in this house?");
-
+        return question("How many people live in this house?", true);
       case 6:
-        return question("What is the age of your house (sorry for being rude)");
-
+        return question("What is keeping your home safe from burglars?", false);
       default:
-        return question("What is keeping your home safe from burglars");
+        return question(
+            "Hey! Please tell me What is the size of your house in square meters",
+            true);
     }
   }
 }
