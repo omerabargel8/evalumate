@@ -3,6 +3,9 @@ import 'package:flutter_app/screens/product.dart';
 import 'package:flutter_app/screens/scan.dart';
 import 'package:flutter_app/widgets/card_item.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Checkout extends StatefulWidget {
   @override
@@ -11,35 +14,131 @@ class Checkout extends StatefulWidget {
 
 class _CheckoutState extends State<Checkout> {
   final TextEditingController _couponlControl = new TextEditingController();
+  PickedFile image;
+  final _imagePicker = ImagePicker();
 
+  var file;
   @override
   void initState() {
     super.initState();
+  }
+
+  //ImageUpload imageUpload = ImageUpload('businesses_img');
+  _imgFromCamera() async {
+    image = await _imagePicker.getImage(
+        source: ImageSource.camera, imageQuality: 50);
+
+    setState(() {
+      file = File(image.path);
+    });
+    postToServer(file);
+  }
+
+  _imgFromGallery() async {
+    image = await _imagePicker.getImage(source: ImageSource.gallery);
+    setState(() {
+      print(image.path);
+      file = File(image.path);
+    });
+    postToServer(file);
+  }
+
+  postToServer(image) async {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return Center(
+            child: SpinKitFadingCube(
+              color: Color.fromRGBO(210, 35, 42, 0.9),
+              size: 50.0,
+            ),
+          );
+        });
+    await Future.delayed(Duration(seconds: 5));
+    products.add({"img": "assets/armchair.jpeg", "name": "Armchair"});
+    Navigator.pop(context);
+    setState(() {});
+
+    // showDialog(
+    //   context: context,
+    //   builder: (BuildContext context) => _buildPopupDialog(context),
+    // );
+
+    // var response = await Dio().post("http://10.30.17.92:5000/recognize",
+    //     data: image.readAsBytesSync());
+    // print(response);
+  }
+
+  void _showPicker(context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext bc) {
+          return SafeArea(
+            child: Container(
+              child: new Wrap(
+                children: <Widget>[
+                  new ListTile(
+                      leading: new Icon(Icons.photo_library),
+                      title: new Text('Photo Library'),
+                      onTap: () {
+                        _imgFromGallery();
+                        Navigator.of(context).pop();
+                      }),
+                  new ListTile(
+                    leading: new Icon(Icons.photo_camera),
+                    title: new Text('Camera'),
+                    onTap: () {
+                      _imgFromCamera();
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
+  Widget _buildPopupDialog(BuildContext context) {
+    return new AlertDialog(
+      contentPadding: const EdgeInsets.all(16.0),
+      content: new Column(
+        children: <Widget>[
+          Text("Nice showcase!\nDoes it have any special meaning for you?"),
+          new Expanded(
+              child: new TextField(
+            autofocus: true,
+            decoration: new InputDecoration(
+              labelStyle: TextStyle(fontSize: 20),
+              helperStyle: TextStyle(fontSize: 16),
+              helperText: "If yes, you can write about it here",
+            ),
+          ))
+        ],
+      ),
+      actions: <Widget>[
+        new FlatButton(
+            child: const Text('NO SPECIAL MEANING'),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
+        new FlatButton(
+            child: const Text('SAVE DESCRIPTION'),
+            onPressed: () {
+              Navigator.pop(context);
+            })
+      ],
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Text(
-          "Start Scaning",
-          style: TextStyle(
-            fontSize: 23,
-            fontWeight: FontWeight.w800,
-          ),
-        ),
+        backgroundColor: Color.fromRGBO(210, 35, 42, 0.9),
         elevation: 0.0,
-        actions: <Widget>[
-          IconButton(
-            tooltip: "Back",
-            icon: Icon(
-              Icons.clear,
-              color: Theme.of(context).accentColor,
-            ),
-            onPressed: () => Navigator.pop(context),
-          ),
-        ],
+        title: Text('Living Room Scanning'),
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
@@ -79,10 +178,11 @@ class _CheckoutState extends State<Checkout> {
               ),
               label: Text('Add product'),
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Scan()),
-                );
+                _showPicker(context);
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => Scan()),
+                // );
               },
               style: ElevatedButton.styleFrom(
                 primary: Color.fromRGBO(210, 35, 42, 0.9),

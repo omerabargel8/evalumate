@@ -162,8 +162,7 @@ class HomePage extends StatelessWidget {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              HotelListView()),
+                                          builder: (context) => Scan()),
                                     );
                                   },
                                   child: TaskColumn(

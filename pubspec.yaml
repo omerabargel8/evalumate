@@ -61,7 +61,9 @@ flutter:
     - assets/logo.jpg
     - assets/refrigerator.jpg
     - assets/couch.jpg
-    - assets/tv.jpeg
+    - assets/tv.jpg
+    - assets/showcase.jpeg
+    - assets/armchair.jpeg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
