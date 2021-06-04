@@ -90,7 +90,7 @@ class _QuestionsStepperState extends State<QuestionsStepper> {
             ? SpinBox(
                 min: 1,
                 max: 100,
-                value: 50,
+                value: 4,
                 onChanged: (value) => print(value),
               )
             : TextField(

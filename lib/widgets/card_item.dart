@@ -6,11 +6,13 @@ class CartItem extends StatelessWidget {
   final bool isFav;
   final double rating;
   final int raters;
+  final String subname;
 
   CartItem(
       {Key key,
       @required this.name,
       @required this.img,
+      @required this.subname,
       @required this.isFav,
       @required this.rating,
       @required this.raters})
@@ -54,6 +56,14 @@ class CartItem extends StatelessWidget {
                   "$name",
                   style: TextStyle(
                     fontSize: 20,
+                    fontWeight: FontWeight.w900,
+                    color: Color.fromRGBO(0, 101, 149, 1),
+                  ),
+                ),
+                Text(
+                  "$subname",
+                  style: TextStyle(
+                    fontSize: 13,
                     fontWeight: FontWeight.w900,
                     color: Color.fromRGBO(0, 101, 149, 1),
                   ),
