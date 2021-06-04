@@ -15,24 +15,29 @@ class _RoomsState extends State<Rooms> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Color.fromRGBO(241, 241, 241, 1),
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(210, 35, 42, 0.9),
+        elevation: 0.0,
+        title: Text('Scan Panel'),
+      ),
       body: SafeArea(
         child: Column(
           children: <Widget>[
             TopContainer(
-              height: 150,
+              height: 140,
               width: width,
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Icon(Icons.menu,
-                            color: LightColors.kDarkBlue, size: 30.0),
-                        Icon(Icons.search,
-                            color: LightColors.kDarkBlue, size: 25.0),
-                      ],
-                    ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //   children: <Widget>[
+                    //     Icon(Icons.menu,
+                    //         color: LightColors.kDarkBlue, size: 30.0),
+                    //     Icon(Icons.search,
+                    //         color: LightColors.kDarkBlue, size: 25.0),
+                    //   ],
+                    // ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 0, vertical: 0.0),

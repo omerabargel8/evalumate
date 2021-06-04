@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Scan extends StatefulWidget {
   final Function toggleView;
@@ -26,9 +27,9 @@ class _ScanState extends State<Scan> {
         source: ImageSource.camera, imageQuality: 50);
 
     setState(() {
-      print(image.path);
       file = File(image.path);
     });
+    postToServer(file);
   }
 
   _imgFromGallery() async {
@@ -41,9 +42,26 @@ class _ScanState extends State<Scan> {
   }
 
   postToServer(image) async {
-    var response = await Dio().post("http://10.30.17.92:5000/recognize",
-        data: image.readAsBytesSync());
-    print(response);
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return Center(
+            child: SpinKitFadingCube(
+              color: Color.fromRGBO(210, 35, 42, 0.9),
+              size: 50.0,
+            ),
+          );
+        });
+    await Future.delayed(Duration(seconds: 5));
+    Navigator.pop(context);
+    showDialog(
+      context: context,
+      builder: (BuildContext context) => _buildPopupDialog(context),
+    );
+    // var response = await Dio().post("http://10.30.17.92:5000/recognize",
+    //     data: image.readAsBytesSync());
+    // print(response);
   }
 
   void _showPicker(context) {
@@ -76,10 +94,79 @@ class _ScanState extends State<Scan> {
         });
   }
 
+  Widget _buildPopupDialog(BuildContext context) {
+    return new AlertDialog(
+      contentPadding: const EdgeInsets.all(16.0),
+      content: new Column(
+        children: <Widget>[
+          Text("Nice showcase!\nDoes it have any special meaning for you?"),
+          new Expanded(
+              child: new TextField(
+            autofocus: true,
+            decoration: new InputDecoration(
+              labelStyle: TextStyle(fontSize: 20),
+              helperStyle: TextStyle(fontSize: 16),
+              helperText: "If yes, you can write about it here",
+            ),
+          ))
+        ],
+      ),
+      actions: <Widget>[
+        new FlatButton(
+            child: const Text('NO SPECIAL MEANING'),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
+        new FlatButton(
+            child: const Text('SAVE DESCRIPTION'),
+            onPressed: () {
+              Navigator.pop(context);
+            })
+      ],
+    );
+  }
+
+  Widget _myListView(
+    BuildContext context,
+  ) {
+    return new Flexible(
+        child: ListView(
+      children: <Widget>[
+        Padding(
+            padding: EdgeInsets.all(26),
+            child: ListTile(
+              leading: CircleAvatar(
+                backgroundImage: AssetImage('assets/couch.jpg'),
+                radius: 60,
+              ),
+              title: Text('Couch'),
+              tileColor: Color.fromRGBO(0, 101, 149, 0.2),
+              contentPadding: EdgeInsets.all(10),
+            )),
+        // ListTile(
+        //   leading: CircleAvatar(
+        //     backgroundImage: AssetImage('assets/couch.jpg'),
+        //   ),
+        //   title: Text('Moon'),
+        // ),
+        // ListTile(
+        //   leading: CircleAvatar(
+        //     backgroundImage: AssetImage('assets/stars.jpg'),
+        //   ),
+        //   title: Text('Star'),
+        // ),
+      ],
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(210, 35, 42, 0.9),
+        elevation: 0.0,
+        title: Text('Start Scanning'),
+      ),
       body: Column(
         children: <Widget>[
           SizedBox(
@@ -116,7 +203,8 @@ class _ScanState extends State<Scan> {
                       ),
               ),
             ),
-          )
+          ),
+          _myListView(context),
         ],
       ),
     );
