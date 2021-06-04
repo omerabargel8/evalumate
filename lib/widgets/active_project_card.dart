@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/light_colors.dart';
-import 'package:flutter_app/screens/scan.dart';
+import 'package:flutter_app/screens/living_room.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class ActiveProjectsCard extends StatelessWidget {
@@ -66,7 +66,7 @@ class ActiveProjectsCard extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Scan()),
+                      MaterialPageRoute(builder: (context) => Checkout()),
                     );
                   },
                 ),
