@@ -56,14 +56,19 @@ class _CheckoutState extends State<Checkout> {
           );
         });
     await Future.delayed(Duration(seconds: 5));
-    products.add({"img": "assets/armchair.jpeg", "name": "Armchair"});
+    products.add({
+      "img": "assets/showcase.jpeg",
+      "name": "Showcase",
+      "subname": "Vintage showcase costs 10k NIS"
+    });
     Navigator.pop(context);
-    setState(() {});
 
-    // showDialog(
-    //   context: context,
-    //   builder: (BuildContext context) => _buildPopupDialog(context),
-    // );
+    showDialog(
+      context: context,
+      builder: (BuildContext context) => _buildPopupDialog(context),
+    );
+
+    setState(() {});
 
     // var response = await Dio().post("http://10.30.17.92:5000/recognize",
     //     data: image.readAsBytesSync());
@@ -165,6 +170,7 @@ class _CheckoutState extends State<Checkout> {
                   img: product['img'],
                   isFav: false,
                   name: product['name'],
+                  subname: product['subname'],
                   rating: 5.0,
                   raters: 23,
                 );
