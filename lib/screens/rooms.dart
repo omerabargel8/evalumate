@@ -55,12 +55,6 @@ class _RoomsState extends State<Rooms> {
                                     fontWeight: FontWeight.w800,
                                     color: Color.fromRGBO(0, 101, 149, 1),
                                   ),
-                                  // style: TextStyle(
-                                  //   fontFamily: GoogleFonts.dancingScript(),
-                                  //   fontSize: 50.0,
-                                  //   color: Colors.black,
-                                  //   fontWeight: FontWeight.w800,
-                                  // ),
                                 ),
                               ),
                               Icon(Icons.home,

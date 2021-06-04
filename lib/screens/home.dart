@@ -147,7 +147,9 @@ class HomePage extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => HotelListView()),
+                                      builder: (context) =>
+                                          // DetailPage(lesson: lesson)
+                                          Scan()),
                                 );
                               },
                               child: TaskColumn(
